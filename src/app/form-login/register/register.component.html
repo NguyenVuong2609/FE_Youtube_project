@@ -1,0 +1,81 @@
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                <form class="form-angular" style="text-align: center" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
+
+                  <!--                    Username-->
+                  <mat-form-field style="width: 350px" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input name="username" #username="ngModel" [(ngModel)]="form.username" matInput required minlength="3" maxlength="50">
+                    <mat-icon matSuffix>face</mat-icon>
+                    <mat-error *ngIf="username.hasError('required')"> The username is required</mat-error>
+                    <mat-error *ngIf="username.hasError('minlength')"> The username must be at least 3 characters</mat-error>
+                  </mat-form-field>
+                  <br><br>
+
+                  <!--                    Name-->
+                  <mat-form-field style="width: 350px" appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input name="name" #name="ngModel" [(ngModel)]="form.name" matInput required minlength="3" maxlength="30">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <mat-error *ngIf="name.hasError('required')"> The name is required</mat-error>
+                    <mat-error *ngIf="name.hasError('minlength')"> The name must be at least 3 characters</mat-error>
+                  </mat-form-field>
+                  <br><br>
+
+                  <!--                    Mail-->
+                  <mat-form-field style="width: 350px" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input name="email" [(ngModel)]="form.email" matInput [formControl]="emailFormValidate" required>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="emailFormValidate.hasError('required')"> The email is required!</mat-error>
+                    <mat-error *ngIf="emailFormValidate.hasError('email')"> The email is invalid! Ex: vuong@gmail.com</mat-error>
+                  </mat-form-field>
+                  <br><br>
+
+                  <!--                    Password-->
+                  <mat-form-field style="width: 350px" appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input name="password" #password="ngModel" [(ngModel)]="form.password" matInput
+                           [type]="hide ? 'password' : 'text'" required minlength="6" maxlength="100"
+                           pattern="(?=.*[a-z,A-Z])(?=.*[0-9])(?=.+[@$]).{6,99}">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="password.hasError('required')"> The password is required</mat-error>
+                    <mat-error *ngIf="password.hasError('minlength')"> The password must be at least 6 characters</mat-error>
+                    <mat-error *ngIf="password.hasError('pattern')"> The password Must contain at least one number and one uppercase and lowercase letter</mat-error>
+                  </mat-form-field>
+                  <br><br><br>
+
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label">
+                      I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
+
+                  <button type="submit" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Register
+                    <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon></button>
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="https://firebasestorage.googleapis.com/v0/b/vuongcuti-6ce58.appspot.com/o/metuberegister.jpg?alt=media&token=95d43750-f925-4119-991b-4b52dd53cb34"
+                     class="img-fluid" alt="Sample image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

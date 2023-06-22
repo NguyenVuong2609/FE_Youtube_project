@@ -1,0 +1,11 @@
+<div>
+  <input type="file" (change)="onFileChanged($event)"><br>
+  <mat-progress-bar *ngIf="checkUploadFileMp3" mode="indeterminate"></mat-progress-bar>
+  <!--    <button *ngIf="downloadURL?!selectedFile:selectedFile" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-success"-->
+  <!--            (click)="onUpload()">Upload Avatar</button>-->
+  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
+    <audio controls>
+      <source [src]="downloadURL" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
