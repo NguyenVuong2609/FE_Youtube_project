@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   status = 'Please fill in the form to login'
 
   constructor(private authService: AuthService, private tokenService: TokenService,
-              private router: Router) {
+              private router: Router,) {
   }
 
   login() {

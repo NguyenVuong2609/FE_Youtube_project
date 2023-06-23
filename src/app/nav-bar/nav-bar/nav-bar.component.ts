@@ -31,7 +31,7 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.clear();
+    localStorage.clear();
     window.location.reload();
   }
 }

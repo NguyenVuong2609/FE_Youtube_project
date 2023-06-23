@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {PageEvent} from "@angular/material/paginator";
+import {HistoryService} from "../../service/history.service";
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private builder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private historyService: HistoryService
+    ) {
   }
 
   ngOnInit(): void {
@@ -50,6 +53,9 @@ export class RegisterComponent implements OnInit {
       } else {
         this.status = 'Create account successful!';
         this.authService.setRegister(true);
+        this.historyService.createHistory(this.form.username).subscribe(data=>{
+          console.log(data)
+        })
         this.router.navigate(['login']);
       }
     });
