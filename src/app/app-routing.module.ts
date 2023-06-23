@@ -4,10 +4,12 @@ import {HomeComponent} from "./home/home/home.component";
 import {LoginComponent} from "./form-login/login/login.component";
 import {RegisterComponent} from "./form-login/register/register.component";
 import {DashboardComponent} from "./home/dashboard/dashboard.component";
+import {DetailVideoComponent} from "./content/video/detail-video/detail-video.component";
 
 const routes: Routes = [
   {path: "", component: DashboardComponent, children:[
       {path: "", component: HomeComponent},
+      {path: "video/:id", component: DetailVideoComponent},
     ]},
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},

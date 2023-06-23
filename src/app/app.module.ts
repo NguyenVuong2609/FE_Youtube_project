@@ -32,6 +32,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import { DetailVideoComponent } from './content/video/detail-video/detail-video.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     FooterComponent,
     HomeComponent,
     DashboardComponent,
-    SideBarComponent
+    SideBarComponent,
+    DetailVideoComponent
   ],
   imports: [
     HttpClientModule,

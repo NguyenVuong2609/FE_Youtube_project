@@ -5,7 +5,8 @@
       <a class="navbar-brand" routerLink="/">
         <img
           alt=""
-          src="https://firebasestorage.googleapis.com/v0/b/giangvan-248ea.appspot.com/o/logo.png?alt=media&token=ea07d5cc-ec42-4e5e-839c-22b6558e49ae" width="10%">
+          src="https://firebasestorage.googleapis.com/v0/b/giangvan-248ea.appspot.com/o/logo.png?alt=media&token=ea07d5cc-ec42-4e5e-839c-22b6558e49ae"
+          width="10%">
         <span> MeTUBE</span>
       </a>
     </div>
@@ -21,15 +22,47 @@
       </form>
     </div>
     <div class="col-4 text-right">
-      <div class="userLogin d-flex justify-content-end">
-          <a routerLink="login" class="btn btn-outline-primary">
-            <i class="fas fa-user-circle" style="font-size: 20px;"></i>
-            <span style="font-size:14px; font-weight: 600;"> SIGN IN</span>
-          </a>
-          <a routerLink="register" class="btn btn-outline-primary">
-            <i class="fas fa-user-circle" style="font-size: 20px;"></i>
-            <span style="font-size:14px; font-weight: 600;"> SIGN UP</span>
-          </a>
+      <div class="userLogin d-flex justify-content-end" *ngIf="!checkLogin">
+        <a routerLink="login" class="btn btn-outline-primary">
+          <i class="fas fa-user-circle" style="font-size: 20px;"></i>
+          <span style="font-size:14px; font-weight: 600;"> SIGN IN</span>
+        </a>
+        <a routerLink="register" class="btn btn-outline-primary">
+          <i class="fas fa-user-circle" style="font-size: 20px;"></i>
+          <span style="font-size:14px; font-weight: 600;"> SIGN UP</span>
+        </a>
+      </div>
+
+      <div class="userLogin d-flex justify-content-end" *ngIf="checkLogin">
+        <div class="btn-group dropdown">
+          <img src="{{avatar}}" alt="" style="margin-right: 10px">
+          <button type="button" class="btn btn-secondary dropdown-toggle"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+            {{name}}
+          </button>
+
+          <ul class="dropdown-menu" style="text-align: center">
+            <li>
+              <button type="button" class="btn btn-success" data-toggle="modal"
+                      data-target="#exampleModal" style="width: 100%">Account Information
+              </button>
+            </li>
+            <li *ngIf="!curChannel">
+              <a class="dropdown-item" href="/channel-create">Create your channel</a>
+            </li>
+            <li *ngIf="curChannel">
+              <a class="dropdown-item" href="/channel-create">Create Video</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/channel-create">Create Playlist</a>
+            </li>
+            <li>
+              <button type="button" (click)="logout()" class="btn btn-danger" data-toggle="modal"
+                      data-target="#exampleModal" style="width: 100%">Log out
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

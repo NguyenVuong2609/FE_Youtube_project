@@ -1,9 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-html,body{
-  font-size: 14px;
-  font-family: Roboto, Arial, sans-serif;
-  background: #f9f9f9;
-}
+/*!* You can add global styles to this file, and also import other style files *!*/
+/*html,body{*/
+/*  font-size: 14px;*/
+/*  font-family: Roboto, Arial, sans-serif;*/
+/*  background: #f9f9f9;*/
+/*}*/
 
 
 .search{
@@ -555,3 +555,6 @@ table tr{
 .video_list{
   padding-left: 0px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

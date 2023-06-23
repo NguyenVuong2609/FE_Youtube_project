@@ -15,42 +15,42 @@ export class TokenService {
   }
 
   public setName(name: string) {
-    sessionStorage.removeItem(NAME_KEY);
-    sessionStorage.setItem(NAME_KEY, name);
+    localStorage.removeItem(NAME_KEY);
+    localStorage.setItem(NAME_KEY, name);
   }
 
   public getName(): string {
     // @ts-ignore
-    return sessionStorage.getItem(NAME_KEY);
+    return localStorage.getItem(NAME_KEY);
   }
   public setAvatar(avatar: string) {
-    sessionStorage.removeItem(AVATAR_KEY);
-    sessionStorage.setItem(AVATAR_KEY, avatar);
+    localStorage.removeItem(AVATAR_KEY);
+    localStorage.setItem(AVATAR_KEY, avatar);
   }
 
   public getAvatar(): string {
     // @ts-ignore
-    return sessionStorage.getItem(AVATAR_KEY);
+    return localStorage.getItem(AVATAR_KEY);
   }
   public setToken(token: string) {
-    sessionStorage.removeItem(TOKEN_KEY);
-    sessionStorage.setItem(TOKEN_KEY, token);
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string {
     // @ts-ignore
-    return sessionStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY);
   }
   public setRole(role: string[]) {
-    sessionStorage.removeItem(ROLE_KEY);
-    sessionStorage.setItem(ROLE_KEY, JSON.stringify(role));
+    localStorage.removeItem(ROLE_KEY);
+    localStorage.setItem(ROLE_KEY, JSON.stringify(role));
   }
 
   public getRole(): string[] {
     this.roles = [];
     if (this.getToken()){
       // @ts-ignore
-      JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role=>{
+      JSON.parse(localStorage.getItem(ROLE_KEY)).forEach(role=>{
         this.roles?.push(role.authority)
       })
     }

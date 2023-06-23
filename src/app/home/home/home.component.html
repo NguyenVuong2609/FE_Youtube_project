@@ -1,9 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
-      <mat-card style="margin: 0">
-        <h1>home</h1>
+    <div class="col-12 " style="margin-top: 70px; margin-bottom: 25px">
+      <mat-card style="margin: 0" class="d-flex flex-row flex-wrap">
+        <div class="col-md-4 p-2" *ngFor="let vid of listVideo">
+          <div class="card">
+            <a routerLink="/video/{{vid.id}}">
+              <img src="{{vid.avatar}}"
+                   alt="image" height="174"/>
+            </a>
+            <div class="row">
+              <div class="col-3 mt-3" style="text-align: center">
+                <img width="50" height="50" style="border-radius: 50%"
+                     src="{{vid.channel?.avatar}}">
+              </div>
+              <div class="col-9 mt-3">
+                <p class="mb-2">{{vid.vname}}</p>
+                <p style="color:#606060;">
+                  {{vid.channel?.chName}} <i
+                  class="fas fa-check-circle"></i><br>
+                  {{vid.views}} views - {{vid.date}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </mat-card>
+      <mat-paginator [length]="totalElements"
+                     (page)="nextPage($event)"
+                     [pageSizeOptions]=[3,6,12]
+                     aria-label="Select page">
+      </mat-paginator>
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ import {SignUpForm} from "../../model/SignUpForm";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-register',
@@ -52,5 +53,10 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['login']);
       }
     });
+  }
+
+
+  nextPage($event: PageEvent) {
+    console.log('click register')
   }
 }

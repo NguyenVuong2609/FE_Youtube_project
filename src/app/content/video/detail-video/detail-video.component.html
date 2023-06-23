@@ -1,0 +1,116 @@
+<!-- main content -->
+<div class="row main_container">
+  <div class="col-md-2"></div>
+  <div class="col-md-7">
+    <!--      <div class="alert alert-success" role="alert">-->
+    <!--        Added to playlist-->
+    <!--      </div>-->
+
+    <!--      <div class="alert alert-warning" role="alert">-->
+    <!--        Video already in your playlist-->
+    <!--      </div>-->
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-sx-10 p-2">
+          <div class="card">
+            <video src="{{video.vlink}}" controls autoplay></video>
+            <div class="row" style="border: 1px solid #005cbf; border-radius: 8px; margin-top: 10px">
+              <div class="col-2 mt-3" style="text-align: center;">
+                <img width="70" height="70" style="border-radius: 50%"
+                     src="{{video.channel?.avatar}}"
+                     class="rounded-circle">
+              </div>
+              <div class="col-3 mt-3">
+                <p class="mb-2" style="font-size: 16px">
+                  {{video.vname}}</p>
+                <p style="color:#606060;">
+                  {{video.channel?.chName}}<i class="fas fa-check-circle"></i><br>
+                  {{video.views}} views - {{video.date}}
+                </p>
+                <p>{{video.channel?.followerList?.length}} Subscribers</p>
+              </div>
+              <div class="col-2 mt-3">
+                <!--                  Not follow-->
+                <!--                      <a href="/channel?action=add&id=${video.video_id}&idc=${video.channel.getChannel_id()}">-->
+                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;blue">Subscribe</button>-->
+                <!--                      </a>-->
+                <!--                  -->
+                <!--&lt;!&ndash;                   Followed&ndash;&gt;-->
+                <!--                      <a href="/channel?action=remove&id=${video.video_id}&idc=${video.channel.getChannel_id()}">-->
+                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;red">Unsubscribe</button>-->
+                <!--                      </a>-->
+
+                <!--                    not signin-->
+                <a routerLink="/login">
+                  <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--blue">Subscribe</button>
+                </a>
+
+              </div>
+              <div class="col-2 mt-3">
+                <span>{{video.likeList?.length}}</span>
+                <!--                  not signin-->
+                <a routerLink="/login">
+                  <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--green">Like</button>
+                </a>
+
+
+                <!--                      <a href="/like?action=like&id=${video.video_id}">-->
+                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;green">Like</button>-->
+                <!--                      </a>-->
+                <!--            -->
+                <!--                    -->
+                <!--                      <a href="/like?action=unlike&id=${video.video_id}">-->
+                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;red">Unlike</button>-->
+                <!--                      </a>-->
+                <!--              -->
+
+              </div>
+              <div class="col-2 mt-3">
+                <div class="btn-group dropdown">
+                  <button type="button" class="btn btn-secondary dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Add to Playlist
+                  </button>
+
+                  <ul class="dropdown-menu">
+
+                    <!--                          <li>-->
+                    <!--                            <a href="/playlist?action=delete&id=${video.video_id}&idPL=${playlist.getPlaylist_id()}">-->
+                    <!--                              <button class="btn btn-danger">-->
+                    <!--                                Remove from -->
+                    <!--                              </button>-->
+                    <!--                            </a>-->
+                    <!--                          </li>-->
+                    <!--                   -->
+                    <!--                        -->
+                    <!--                          <li>-->
+                    <!--                            <a href="/playlist?action=add&id=${video.video_id}&idPL=${listNotHavingVideo.getPlaylist_id()}">-->
+                    <!--                              <button class="btn btn-success">-->
+                    <!--                                -->
+                    <!--                              </button>-->
+                    <!--                            </a>-->
+                    <!--                          </li>-->
+
+
+                    <!--                      not signin-->
+                    <li>
+                      <a routerLink="/login" class="dropdown-item">
+                        <button class="btn">
+                          Please Login First
+                        </button>
+                      </a>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
