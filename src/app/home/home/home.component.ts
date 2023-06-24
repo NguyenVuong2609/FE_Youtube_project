@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   getPageRequest(request: any) {
     this.videoService.getListVideoPageService(request).subscribe(data => {
+      console.log(data)
       this.listVideo = data["content"];
       this.totalElements = data["totalElements"]
     })

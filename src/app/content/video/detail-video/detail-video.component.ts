@@ -16,9 +16,9 @@ export class DetailVideoComponent implements OnInit{
               private videoService: VideoService) {
   }
   ngOnInit(): void {
-    this.actRouter.paramMap.subscribe(songId =>{
+    this.actRouter.paramMap.subscribe(videoId =>{
       // @ts-ignore
-      const id = +songId.get("id");
+      const id = +videoId.get("id");
       this.videoService.getVideoDetail(id).subscribe(data=>{
         this.video = data;
       })

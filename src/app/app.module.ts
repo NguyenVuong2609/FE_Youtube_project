@@ -33,6 +33,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import { DetailVideoComponent } from './content/video/detail-video/detail-video.component';
+import { NotFoundComponent } from './nav-bar/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DetailVideoComponent } from './content/video/detail-video/detail-video.
     HomeComponent,
     DashboardComponent,
     SideBarComponent,
-    DetailVideoComponent
+    DetailVideoComponent,
+    NotFoundComponent
   ],
   imports: [
     HttpClientModule,

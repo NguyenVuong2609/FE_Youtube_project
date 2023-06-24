@@ -4,7 +4,7 @@ import {Channel} from "./Channel";
 
 export class Video {
   public id?: number;
-  public vname?: string;
+  public name?: string;
   public vlink?: string;
   public avatar?: string;
   public views?: number;
@@ -14,8 +14,8 @@ export class Video {
   public channel?: Channel;
 
 
-  constructor(vname: string, vlink: string, avatar: string, views: number, categoryList: Category[], likeList: JwtResponse[], date: string, channel: Channel) {
-    this.vname = vname;
+  constructor(name: string, vlink: string, avatar: string, views: number, categoryList: Category[], likeList: JwtResponse[], date: string, channel: Channel) {
+    this.name = name;
     this.vlink = vlink;
     this.avatar = avatar;
     this.views = views;
