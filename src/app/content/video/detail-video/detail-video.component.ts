@@ -5,6 +5,8 @@ import {VideoService} from "../../../service/video.service";
 import {TokenService} from "../../../service/token.service";
 import {CommentService} from "../../../service/comment.service";
 import {Comment} from "../../../model/Comment";
+import {ChannelService} from "../../../service/channel.service";
+import {Channel} from "../../../model/Channel";
 
 @Component({
   selector: 'app-detail-video',
@@ -15,6 +17,7 @@ export class DetailVideoComponent implements OnInit {
   // @ts-ignore
   video = new Video();
   checkLike = false;
+  checkFollow = false;
   checkLogin = false;
   nameUser = '';
   avatarUser = '';
@@ -22,11 +25,16 @@ export class DetailVideoComponent implements OnInit {
   // @ts-ignore
   videoId: number;
   commentList?: Comment[];
+  relatedVideos?: Video[];
+  // @ts-ignore
+  channel: Channel;
+  status = '';
 
   constructor(private actRouter: ActivatedRoute,
               private videoService: VideoService,
               private tokenService: TokenService,
-              private commentService: CommentService,) {
+              private commentService: CommentService,
+              private channelService: ChannelService) {
   }
 
   ngOnInit(): void {
@@ -36,14 +44,24 @@ export class DetailVideoComponent implements OnInit {
       this.videoId = id;
       this.videoService.getVideoDetail(id).subscribe(data => {
         this.video = data;
+        this.channel = data.channel;
       })
+      this.videoService.actionUpdateView(id).subscribe();
       this.videoService.getCheckLikeVideo(id).subscribe(data => {
         if (data.message == "already") {
           this.checkLike = true;
         }
       })
+      this.channelService.getCheckFollower(id).subscribe(data => {
+        if (data.message == "already") {
+          this.checkFollow = true;
+        }
+      })
       this.commentService.getListCommentService(id).subscribe(data =>{
         this.commentList = data
+      })
+      this.videoService.getRelatedVideo(id).subscribe(data =>{
+        this.relatedVideos = data
       })
     })
     if (this.tokenService.getToken()) {
@@ -55,13 +73,31 @@ export class DetailVideoComponent implements OnInit {
 
   actionLike(id: any) {
     this.videoService.actionLikeOrUnlikeVideo(id, this.video).subscribe(data => {
-      window.location.reload();
+      this.videoService.getVideoDetail(id).subscribe(data => {
+        this.video = data;
+        this.checkLike = !this.checkLike;
+      })
     })
   }
 
   postComment() {
     this.commentService.actionPostCommentService(this.videoId,this.form).subscribe(data => {
-      window.location.reload()
+      this.videoService.getVideoDetail(this.videoId).subscribe(data => {
+        this.video = data;
+      })
     })
+  }
+
+  actionFollow(id: any) {
+    this.channelService.actionFollowOrUnfollowService(id, this.channel).subscribe(data =>{
+      if (data.message == 'no_permission'){
+        this.status = "Can not subscribe your channel!"
+      } else {
+        this.videoService.getVideoDetail(this.videoId).subscribe(data => {
+          this.video = data;
+          this.checkFollow = !this.checkFollow;
+        })
+      }
+    });
   }
 }

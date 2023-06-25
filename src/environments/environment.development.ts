@@ -1,4 +1,5 @@
 export const environment = {
+  API_SERVER: 'https://youtubevuongbe-8a1dc8b7f20f.herokuapp.com/',
   // API Local
   API_LOCAL: 'http://localhost:8080/',
   production: true,

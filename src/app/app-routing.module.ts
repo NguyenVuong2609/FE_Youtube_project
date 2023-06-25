@@ -9,12 +9,16 @@ import {NotFoundComponent} from "./nav-bar/not-found/not-found.component";
 import {CheckLoginGuard} from "./service/CheckLoginGuard";
 import {CheckAdminGuard} from "./service/CheckAdminGuard";
 import {PageCategoryComponent} from "./content/category/page-category/page-category.component";
+import {CreateChannelComponent} from "./content/channel/create-channel/create-channel.component";
+import {CreateVideoComponent} from "./content/video/create-video/create-video.component";
 
 const routes: Routes = [
   {path: "", component: DashboardComponent, children:[
       {path: "", component: HomeComponent},
       {path: "video/:id", component: DetailVideoComponent},
       {path: "category", component: PageCategoryComponent, canActivate:[CheckAdminGuard]},
+      {path: "create-channel", component: CreateChannelComponent},
+      {path: "create-video", component: CreateVideoComponent},
     ]},
   {path: "login", component: LoginComponent, canActivate:[CheckLoginGuard]},
   {path: "register", component: RegisterComponent, canActivate:[CheckLoginGuard]},

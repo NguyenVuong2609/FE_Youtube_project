@@ -1,6 +1,6 @@
 <!-- main content -->
 <div class="row main_container">
-  <div class="col-md-8  ">
+  <div class="col-md-8">
     <!--      <div class="alert alert-success" role="alert">-->
     <!--        Added to playlist-->
     <!--      </div>-->
@@ -30,19 +30,18 @@
                 </p>
                 <p>{{video.channel?.followerList?.length}} Subscribers</p>
               </div>
+
+              <!--              Already login-->
               <div class="col-2 mt-3">
-                <!--                  Not follow-->
-                <!--                      <a href="/channel?action=add&id=${video.video_id}&idc=${video.channel.getChannel_id()}">-->
-                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;blue">Subscribe</button>-->
-                <!--                      </a>-->
-                <!--                  -->
-                <!--&lt;!&ndash;                   Followed&ndash;&gt;-->
-                <!--                      <a href="/channel?action=remove&id=${video.video_id}&idc=${video.channel.getChannel_id()}">-->
-                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;red">Unsubscribe</button>-->
-                <!--                      </a>-->
+                <a *ngIf="!checkFollow && checkLogin" (click)="actionFollow(channel.id)">
+                  <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--blue">Subscribe</button>
+                </a>
+                <a *ngIf="checkFollow && checkLogin" (click)="actionFollow(channel.id)">
+                  <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--red">Unsubscribe</button>
+                </a>
 
                 <!--                    not signin-->
-                <a routerLink="/login">
+                <a routerLink="/login" *ngIf="!checkLogin">
                   <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--blue">Subscribe</button>
                 </a>
 
@@ -108,55 +107,88 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="col-md-2"></div>
-<!-- Comment form-->
-<div class="card-footer py-3 border-0 col-md-7" style="background-color: #f8f9fa;">
-  <form #f="ngForm" (ngSubmit)="f.form.valid && postComment()" novalidate
-        class="col-md-12 col-12 col-lg12 form-control">
-    <div class="d-flex flex-start w-100">
-      <img class="rounded-circle shadow-1-strong me-3"
-           src="{{avatarUser}}" alt="avatar" width="40"
-           height="40"/>
-      <div class="form-outline w-100">
+    <div class="card-footer py-3 border-0 col-md-12" style="background-color: #f8f9fa;">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && postComment()" novalidate
+            class="col-md-12 col-12 col-lg12 form-control">
+        <div class="d-flex flex-start w-100">
+          <img class="rounded-circle shadow-1-strong me-3"
+               src="{{avatarUser}}" alt="avatar" width="40"
+               height="40"/>
+          <div class="form-outline w-100">
                 <textarea class="form-control" id="textAreaExample" rows="4"
                           style="background: #fff;" name="content" placeholder="Write something..."
                           [(ngModel)]="form.content" matInput required></textarea>
-        <label class="form-label" for="textAreaExample"
-               style="font-size: 16px; font-style: italic">You are comment as <span
-          style="color: #005cbf">{{nameUser}}</span></label>
+            <label class="form-label" for="textAreaExample"
+                   style="font-size: 16px; font-style: italic">You are comment as <span
+              style="color: #005cbf">{{nameUser}}</span></label>
+          </div>
+        </div>
+        <div class="float-end mt-2 pt-1">
+          <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+        </div>
+      </form>
+      <br><br>
+      <!--Show list comment-->
+      <div class="card p-3 mt-2 comment-card col-md-11" *ngFor="let cm of commentList" style="margin: 0 auto">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="user d-flex flex-row align-items-center gap-3">
+            <img src="{{cm.owner?.avatar}}" style="width: 30px;height: 30px"
+                 class="user-img rounded-circle mr-2">
+            <span><small class="font-weight-bold text-primary" style="margin-right: 5px">{{cm.owner?.name}}</small>
+                            <small class="font-weight-bold">{{cm.content}}</small></span>
+          </div>
+          <small>{{cm.date}}</small>
+        </div>
+        <div class="action d-flex justify-content-between mt-2 align-items-center">
+          <div class="reply px-4 d-flex gap-2">
+            <small class="text-primary">Remove</small>
+            <span class="dots"></span>
+            <small class="text-primary">Reply</small>
+            <span class="dots"></span>
+            <small class="text-primary">Translate</small>
+          </div>
+          <div class="icons align-items-center">
+            <i class="fa fa-check-circle-o check-icon text-primary"></i>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="float-end mt-2 pt-1">
-      <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+  </div>
+
+
+  <!--  Related Videos-->
+  <div class="col-md-4">
+    <div class="grid_title">Related Videos</div>
+    <div class="container-fluid related-videos" *ngFor="let v of relatedVideos">
+      <a href="/user?action=detail&id=${video.video_id}">
+        <div class="row">
+          <div class="col-md-12 col-sx-10 p-2">
+            <div class="card" style="width: 100%;">
+              <img src="{{v.avatar}}" style="width: 100%;">
+              <div class="row">
+                <div class="col-12 mt-3">
+                  <p class="mb-2" style="font-weight: bold; font-size: 16px">
+                    {{v.name}}</p>
+                  <p class="mb-2"
+                     style="font-size: 14px; color:#606060;">{{v.channel?.chName}}</p>
+                  <p class="mb-2" style="color:#606060;">{{v.views}} views</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
-  </form>
+
+  </div>
+
 </div>
 
-<br><br>
-<!--Show list comment-->
 
-<div class="card p-3 mt-2 comment-card col-md-7" *ngFor="let cm of commentList">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="user d-flex flex-row align-items-center gap-3">
-      <img src="{{cm.owner?.avatar}}" style="width: 30px;height: 30px"
-           class="user-img rounded-circle mr-2">
-      <span><small class="font-weight-bold text-primary" style="margin-right: 5px">{{cm.owner?.name}}</small>
-                            <small class="font-weight-bold">{{cm.content}}</small></span>
-    </div>
-    <small>Date</small>
-  </div>
-  <div class="action d-flex justify-content-between mt-2 align-items-center">
-    <div class="reply px-4 d-flex gap-2">
-      <small class="text-primary">Remove</small>
-      <span class="dots"></span>
-      <small class="text-primary">Reply</small>
-      <span class="dots"></span>
-      <small class="text-primary">Translate</small>
-    </div>
-    <div class="icons align-items-center">
-      <i class="fa fa-check-circle-o check-icon text-primary"></i>
-    </div>
-  </div>
-</div>
+<!-- Comment form-->
+
+
+
+
+
+

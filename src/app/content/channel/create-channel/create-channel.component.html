@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
+      <mat-card style="margin: 0">
+        <section class="vh-100">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                  <div class="row g-0">
+                    <div class="col-md-6 col-lg-5 d-none d-md-block">
+                      <img
+                        src="https://firebasestorage.googleapis.com/v0/b/vuongcuti-6ce58.appspot.com/o/ada16846d3640d3a5475.jpg?alt=media&token=101c8026-84ed-4653-9b4b-209194ca3236"
+                        alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;"/>
+                    </div>
+                    <div class="col-md-6 col-lg-7 d-flex align-items-center" style="background-color: darksalmon;">
+                      <div class="card-body p-4 p-lg-5 text-black">
+                        <mat-error>{{status}}</mat-error>
+                        <form #f="ngForm" (ngSubmit)="f.form.valid && createChannel()" novalidate>
+                          <h3>Create Channel</h3>
+                          <div class="mb-3">
+                            <label class="form-label">Channel's Name:</label>
+                            <input type="text" class="form-control" name="channel_name" #name="ngModel"
+                                   [(ngModel)]="form.name" matInput required>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Avatar</label>
+                            <app-upload-avatar (giveURLtoCreate)="onUpload($event)"></app-upload-avatar>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </mat-card>
+    </div>
+  </div>
+</div>

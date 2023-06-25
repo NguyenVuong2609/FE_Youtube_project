@@ -37,6 +37,8 @@ import { NotFoundComponent } from './nav-bar/not-found/not-found.component';
 import { CreateCategoryComponent } from './content/category/create-category/create-category.component';
 import { PageCategoryComponent } from './content/category/page-category/page-category.component';
 import { UpdateCategoryComponent } from './content/category/update-category/update-category.component';
+import { CreateChannelComponent } from './content/channel/create-channel/create-channel.component';
+import { CreateVideoComponent } from './content/video/create-video/create-video.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { UpdateCategoryComponent } from './content/category/update-category/upda
     NotFoundComponent,
     CreateCategoryComponent,
     PageCategoryComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    CreateChannelComponent,
+    CreateVideoComponent
   ],
   imports: [
     HttpClientModule,

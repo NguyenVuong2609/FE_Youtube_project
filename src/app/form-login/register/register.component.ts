@@ -61,8 +61,4 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-
-  nextPage($event: PageEvent) {
-    console.log('click register')
-  }
 }
