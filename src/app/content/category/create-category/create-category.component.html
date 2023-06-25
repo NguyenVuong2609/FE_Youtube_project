@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
+      <mat-card style="margin: 0; text-align: center">
+        <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid && createCategory()" novalidate>
+          <mat-error class="alert alert-warning">{{status}}</mat-error>
+          <mat-form-field style="width: 350px" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input name="name" #name="ngModel" [(ngModel)]="form.name" matInput required minlength="3" maxlength="10">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error *ngIf="name.hasError('required')"> The name is required</mat-error>
+            <mat-error *ngIf="name.hasError('minlength')"> The name must be at least 3 characters</mat-error>
+          </mat-form-field>
+          <br>
+          <app-upload-avatar (giveURLtoCreate)="onUpload($event)"></app-upload-avatar>
+          <button type="submit" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Create
+            <mat-icon color="accent" matSuffix>send</mat-icon></button>
+          <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

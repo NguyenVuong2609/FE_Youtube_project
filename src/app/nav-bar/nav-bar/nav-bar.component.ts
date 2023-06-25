@@ -13,6 +13,8 @@ export class NavBarComponent implements OnInit {
   avatar = '';
   checkLogin = false;
   curChannel?: Channel;
+  roles?: string[];
+  checkAdmin = false;
 
   constructor(private tokenService: TokenService,
               private channelService: ChannelService) {
@@ -23,15 +25,31 @@ export class NavBarComponent implements OnInit {
       this.name = this.tokenService.getName()
       this.avatar = this.tokenService.getAvatar()
       this.checkLogin = true;
-      this.channelService.getMyChannel().subscribe(data =>{
-        this.curChannel = data;
+      this.roles = this.tokenService.getRole()
+      this.checkAdminRole()
+      this.channelService.getMyChannel().subscribe(data => {
+        if (data.message == "not_found") {
+          this.curChannel = undefined
+        } else {
+          this.curChannel = data;
+        }
       });
-
     }
   }
 
   logout() {
     localStorage.clear();
     window.location.reload();
+  }
+
+  checkAdminRole() {
+    if (this.roles) {
+      for (let i = 0; i < this.roles?.length; i++) {
+        if (this.roles[i].toLowerCase() == "admin") {
+          this.checkAdmin = true;
+          break;
+        }
+      }
+    }
   }
 }

@@ -34,6 +34,9 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import { DetailVideoComponent } from './content/video/detail-video/detail-video.component';
 import { NotFoundComponent } from './nav-bar/not-found/not-found.component';
+import { CreateCategoryComponent } from './content/category/create-category/create-category.component';
+import { PageCategoryComponent } from './content/category/page-category/page-category.component';
+import { UpdateCategoryComponent } from './content/category/update-category/update-category.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { NotFoundComponent } from './nav-bar/not-found/not-found.component';
     DashboardComponent,
     SideBarComponent,
     DetailVideoComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CreateCategoryComponent,
+    PageCategoryComponent,
+    UpdateCategoryComponent
   ],
   imports: [
     HttpClientModule,

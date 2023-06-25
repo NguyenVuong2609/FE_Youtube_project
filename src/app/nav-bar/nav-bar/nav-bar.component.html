@@ -47,10 +47,13 @@
                       data-target="#exampleModal" style="width: 100%">Account Information
               </button>
             </li>
-            <li *ngIf="!curChannel">
+            <li *ngIf="checkAdmin">
+              <a class="dropdown-item" routerLink="/category">Create category</a>
+            </li>
+            <li *ngIf="curChannel == undefined">
               <a class="dropdown-item" href="/channel-create">Create your channel</a>
             </li>
-            <li *ngIf="curChannel">
+            <li *ngIf="curChannel != undefined">
               <a class="dropdown-item" href="/channel-create">Create Video</a>
             </li>
             <li>
