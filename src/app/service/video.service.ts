@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
 import {Observable} from "rxjs";
+import {Video} from "../model/Video";
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,11 @@ export class VideoService {
   }
   getVideoDetail(id: number): Observable<any>{
     return this.httpClient.get(this.API_VIDEO + "/" + id)
+  }
+  getCheckLikeVideo(id: number): Observable<any>{
+    return this.httpClient.get(this.API_VIDEO + "/like/" + id)
+  }
+  actionLikeOrUnlikeVideo(id: number, video : Video): Observable<any>{
+    return this.httpClient.put(this.API_VIDEO + "/like/" + id, video);
   }
 }

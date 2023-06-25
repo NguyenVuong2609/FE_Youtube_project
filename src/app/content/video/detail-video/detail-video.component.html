@@ -1,7 +1,6 @@
 <!-- main content -->
 <div class="row main_container">
-  <div class="col-md-2"></div>
-  <div class="col-md-7">
+  <div class="col-md-8  ">
     <!--      <div class="alert alert-success" role="alert">-->
     <!--        Added to playlist-->
     <!--      </div>-->
@@ -51,20 +50,18 @@
               <div class="col-2 mt-3">
                 <span>{{video.likeList?.length}}</span>
                 <!--                  not signin-->
-                <a routerLink="/login">
+                <a routerLink="/login" *ngIf="!checkLogin">
                   <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--green">Like</button>
                 </a>
 
+                <a (click)="actionLike(video.id)" *ngIf="!checkLike && checkLogin">
+                  <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--green">Like</button>
+                </a>
 
-                <!--                      <a href="/like?action=like&id=${video.video_id}">-->
-                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;green">Like</button>-->
-                <!--                      </a>-->
-                <!--            -->
-                <!--                    -->
-                <!--                      <a href="/like?action=unlike&id=${video.video_id}">-->
-                <!--                        <button type="button" class="pushy__btn pushy__btn&#45;&#45;sm pushy__btn&#45;&#45;red">Unlike</button>-->
-                <!--                      </a>-->
-                <!--              -->
+                <a (click)="actionLike(video.id)" *ngIf="checkLike && checkLogin">
+                  <button type="button" class="pushy__btn pushy__btn--sm pushy__btn--red">Unlike</button>
+                </a>
+
 
               </div>
               <div class="col-2 mt-3">
@@ -95,7 +92,7 @@
 
 
                     <!--                      not signin-->
-                    <li>
+                    <li *ngIf="!checkLogin">
                       <a routerLink="/login" class="dropdown-item">
                         <button class="btn">
                           Please Login First
@@ -107,10 +104,59 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-2"></div>
+<!-- Comment form-->
+<div class="card-footer py-3 border-0 col-md-7" style="background-color: #f8f9fa;">
+  <form #f="ngForm" (ngSubmit)="f.form.valid && postComment()" novalidate
+        class="col-md-12 col-12 col-lg12 form-control">
+    <div class="d-flex flex-start w-100">
+      <img class="rounded-circle shadow-1-strong me-3"
+           src="{{avatarUser}}" alt="avatar" width="40"
+           height="40"/>
+      <div class="form-outline w-100">
+                <textarea class="form-control" id="textAreaExample" rows="4"
+                          style="background: #fff;" name="content" placeholder="Write something..."
+                          [(ngModel)]="form.content" matInput required></textarea>
+        <label class="form-label" for="textAreaExample"
+               style="font-size: 16px; font-style: italic">You are comment as <span
+          style="color: #005cbf">{{nameUser}}</span></label>
+      </div>
+    </div>
+    <div class="float-end mt-2 pt-1">
+      <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+    </div>
+  </form>
+</div>
+
+<br><br>
+<!--Show list comment-->
+
+<div class="card p-3 mt-2 comment-card col-md-7" *ngFor="let cm of commentList">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="user d-flex flex-row align-items-center gap-3">
+      <img src="{{cm.owner?.avatar}}" style="width: 30px;height: 30px"
+           class="user-img rounded-circle mr-2">
+      <span><small class="font-weight-bold text-primary" style="margin-right: 5px">{{cm.owner?.name}}</small>
+                            <small class="font-weight-bold">{{cm.content}}</small></span>
+    </div>
+    <small>Date</small>
+  </div>
+  <div class="action d-flex justify-content-between mt-2 align-items-center">
+    <div class="reply px-4 d-flex gap-2">
+      <small class="text-primary">Remove</small>
+      <span class="dots"></span>
+      <small class="text-primary">Reply</small>
+      <span class="dots"></span>
+      <small class="text-primary">Translate</small>
+    </div>
+    <div class="icons align-items-center">
+      <i class="fa fa-check-circle-o check-icon text-primary"></i>
     </div>
   </div>
 </div>
