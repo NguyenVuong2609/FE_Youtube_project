@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Video} from "../../../model/Video";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {VideoService} from "../../../service/video.service";
 import {TokenService} from "../../../service/token.service";
 import {CommentService} from "../../../service/comment.service";
@@ -48,7 +48,8 @@ export class DetailVideoComponent implements OnInit {
               private channelService: ChannelService,
               private playlistService: PlaylistService,
               private historyService: HistoryService,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -145,5 +146,9 @@ export class DetailVideoComponent implements OnInit {
         }
       })
     })
+  }
+
+  routerVideo(id: any) {
+    this.router.navigate(['video/'+id])
   }
 }

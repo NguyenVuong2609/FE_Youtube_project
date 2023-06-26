@@ -151,7 +151,7 @@
     <div class="grid_title">Related Videos</div>
     <mat-dialog-content class="mat-typography">
     <div class="container-fluid related-videos" *ngFor="let v of relatedVideos">
-      <a href="/video/{{v.id}}">
+      <a (click)="routerVideo(v.id)">
         <div class="row">
           <div class="col-md-12 col-sx-10 p-2">
             <div class="card" style="width: 100%;">
