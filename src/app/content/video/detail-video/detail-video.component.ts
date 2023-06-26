@@ -149,6 +149,10 @@ export class DetailVideoComponent implements OnInit {
   }
 
   routerVideo(id: any) {
-    this.router.navigate(['video/'+id])
+    this.router.navigate(['/video/'+id])
+    this.videoService.getVideoDetail(this.videoId).subscribe(data => {
+      this.video = data;
+      window.location.reload()
+    })
   }
 }
