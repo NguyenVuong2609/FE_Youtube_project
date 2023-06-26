@@ -70,35 +70,25 @@
                     Add to Playlist
                   </button>
 
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu" *ngIf="checkLogin">
+                    <li *ngFor="let pl of myPlaylist">
+                      <a (click)="addOrRemoveFromPlaylist(pl.id)" class="dropdown-item">
+                        <button class="btn btn-danger">
+                          Add/Remove from Playlist: {{pl.name}}
+                        </button>
+                      </a>
+                    </li>
+                  </ul>
 
-                    <!--                          <li>-->
-                    <!--                            <a href="/playlist?action=delete&id=${video.video_id}&idPL=${playlist.getPlaylist_id()}">-->
-                    <!--                              <button class="btn btn-danger">-->
-                    <!--                                Remove from -->
-                    <!--                              </button>-->
-                    <!--                            </a>-->
-                    <!--                          </li>-->
-                    <!--                   -->
-                    <!--                        -->
-                    <!--                          <li>-->
-                    <!--                            <a href="/playlist?action=add&id=${video.video_id}&idPL=${listNotHavingVideo.getPlaylist_id()}">-->
-                    <!--                              <button class="btn btn-success">-->
-                    <!--                                -->
-                    <!--                              </button>-->
-                    <!--                            </a>-->
-                    <!--                          </li>-->
-
-
+                  <ul class="dropdown-menu" *ngIf="!checkLogin">
                     <!--                      not signin-->
-                    <li *ngIf="!checkLogin">
+                    <li>
                       <a routerLink="/login" class="dropdown-item">
                         <button class="btn">
                           Please Login First
                         </button>
                       </a>
                     </li>
-
                   </ul>
                 </div>
               </div>
@@ -159,8 +149,9 @@
   <!--  Related Videos-->
   <div class="col-md-4">
     <div class="grid_title">Related Videos</div>
+    <mat-dialog-content class="mat-typography">
     <div class="container-fluid related-videos" *ngFor="let v of relatedVideos">
-      <a href="/user?action=detail&id=${video.video_id}">
+      <a href="/video/{{v.id}}">
         <div class="row">
           <div class="col-md-12 col-sx-10 p-2">
             <div class="card" style="width: 100%;">
@@ -179,7 +170,7 @@
         </div>
       </a>
     </div>
-
+    </mat-dialog-content>
   </div>
 
 </div>

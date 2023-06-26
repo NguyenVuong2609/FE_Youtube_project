@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
+      <mat-card style="margin: 0" class="d-flex flex-row flex-wrap">
+        <div class="col-md-4 p-2" *ngFor="let vid of videoList">
+          <div class="card" style="border-radius: 8px;">
+            <a routerLink="/video/{{vid.id}}">
+              <img src="{{vid.avatar}}"
+                   alt="image" height="174" style="width: 100%; border-radius: 8px"/>
+            </a>
+            <div class="row">
+              <div class="col-3 mt-3" style="text-align: center">
+                <img width="50" height="50" style="border-radius: 50%"
+                     src="{{vid.channel?.avatar}}">
+              </div>
+              <div class="col-9 mt-3">
+                <a routerLink="/video/{{vid.id}}" style="text-decoration: none; color: black">
+                  <p class="mb-2 fw-bold">{{vid.name}}</p>
+                </a>
+                <p style="color:#606060;">
+                  {{vid.channel?.chName}} <i
+                  class="fas fa-check-circle"></i><br>
+                  {{vid.views}} views - {{vid.date}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

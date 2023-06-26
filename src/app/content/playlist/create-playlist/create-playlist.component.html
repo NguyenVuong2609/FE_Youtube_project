@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
+      <mat-card style="margin: 0">
+        <section class="vh-100" style="background-color: #9A616D;">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                  <div class="row g-0">
+                    <div class="col-md-6 col-lg-5 d-none d-md-block">
+                      <img
+                        src="https://firebasestorage.googleapis.com/v0/b/vuongcuti-6ce58.appspot.com/o/createplaylist.png?alt=media&token=bb13c16c-f013-4362-a5ad-25417ee53274"
+                        alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;"/>
+                    </div>
+                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                      <div class="card-body p-4 p-lg-5 text-black">
+
+                        <form class="row g-3" #f="ngForm" (ngSubmit)="f.form.valid && createPlaylist()" novalidate>
+                          <h3>CREATE PLAYLIST</h3>
+                          <mat-error>{{status}}</mat-error>
+                          <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Playlist Name</label>
+                            <input type="text" class="form-control" id="inputEmail4" name="name"
+                                   #name="ngModel" [(ngModel)]="form.name" matInput required>
+                            <mat-error *ngIf="name.hasError('required')"> The name is required</mat-error>
+                          </div>
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </mat-card>
+    </div>
+  </div>
+</div>

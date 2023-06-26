@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
+      <mat-card style="margin: 0">
+        <!-- main content -->
+        <div class="row main_container">
+          <div class="col-12">
+            <!-- content section -->
+            <div class="container-fluid">
+              <div *ngIf="checkLogin">
+                <div class="grid_title"><h2 style="font-size: 30px">My Channel</h2></div>
+                <div *ngIf="channel != undefined" style="font-size: 20px">{{channel?.chName}}</div>
+                <div class="row">
+
+                  <div class="col-md-3 col-sx-10 p-2" *ngFor="let vd of videoList">
+                    <a routerLink="/video/{{vd.id}}"
+                    >
+                      <div class="card">
+                        <img src="{{vd.avatar}}"
+                             height="174"/>
+                        <div class="row">
+                          <div class="col-2 mt-3">
+                            <img width="40" height="40" style="border-radius: 50%"
+                                 src="{{vd.channel?.avatar}}"
+                                 class="rounded-circle">
+                          </div>
+                          <div class="col-10 mt-3">
+                            <p class="mb-2"
+                               title="{{vd.name}}">
+                              {{vd.name}}</p>
+                            <p style="color:#606060;">{{vd.views}}
+                              views {{vd.date}}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+                <h3 *ngIf="channel == undefined">You haven't created channel yet</h3>
+              </div>
+
+              <div class="right-wrapper" *ngIf="!checkLogin">
+                <h3 class="spinnerIconWrapper">
+                  <div class="spinnerIcon"></div>
+                </h3>
+                <h3 class="finished-text">
+                  Please login first
+                </h3>
+              </div>
+
+            </div>
+          </div>
+          <p><br></p>
+          <p><br></p>
+          <p><br></p>
+
+            <div class="col-12">
+              <!-- content section -->
+              <div class="container-fluid" *ngIf="checkLogin">
+                  <div class="grid_title"><h3>Subscriber</h3></div>
+                    <div class="row col-md-12" style="gap: 1%">
+
+                        <div class="col-md-2 card" *ngFor="let sb of subscriberList">
+                          <img src="{{sb.avatar}}"
+                               width="100" height="100" style="border-radius: 50%; margin: 0 auto"/>
+                          <p style="text-align: center">{{sb.name}}</p>
+                        </div>
+
+                    </div>
+              </div>
+            </div>
+        </div>
+        <!-- main content -->
+
+      </mat-card>
+    </div>
+  </div>
+</div>

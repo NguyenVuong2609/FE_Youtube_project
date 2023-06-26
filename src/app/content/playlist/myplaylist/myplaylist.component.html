@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 25px">
+      <mat-card style="margin: 0">
+        <!-- main content -->
+        <div class="row main_container">
+          <div class="col-md-12">
+            <!-- content section -->
+            <div class="container-fluid">
+              <div *ngIf="checkLogin">
+                <div class="grid_title"><h3>My Playlist</h3></div>
+                <div class="grid_title flex-row d-flex flex-wrap" *ngIf="myPlaylist?.length != 0">
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="gap-5 flex-wrap">
+                    <div class="col-md-3 col-sx-10 p-2" *ngFor="let pl of myPlaylist">
+                      <img width="40" height="40" style="border-radius: 50%"
+                           src="{{avatar}}"
+                           class="rounded-circle">
+                      <a mat-raised-button (click)="renderVideo(pl.id)" style="cursor: pointer">
+                        <mat-button-toggle>{{pl.name}}</mat-button-toggle>
+                      </a>
+                    </div>
+                  </mat-button-toggle-group>
+                </div>
+                <h3 *ngIf="myPlaylist?.length == 0">You haven't created playlist yet</h3>
+
+                <div class="row">
+                  <div class="col-md-3 col-sx-10 p-2" *ngFor="let vd of videoList">
+                    <a routerLink="/video/{{vd.id}}">
+                      <div class="card">
+                        <img src="{{vd.avatar}}"
+                             height="174"/>
+                        <div class="row">
+                          <div class="col-2 mt-3">
+                            <img width="40" height="40" style="border-radius: 50%"
+                                 src="{{vd.channel?.avatar}}"
+                                 class="rounded-circle">
+                          </div>
+                          <div class="col-10 mt-3">
+                            <p class="mb-2"
+                               title="{{vd.name}}">
+                              {{vd.name}}</p>
+                            <p style="color:#606060;">{{vd.views}}
+                              views {{vd.date}}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="right-wrapper" *ngIf="!checkLogin">
+                <h3 class="spinnerIconWrapper">
+                  <div class="spinnerIcon"></div>
+                </h3>
+                <h3 class="finished-text">
+                  Please login first
+                </h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- main content -->
+      </mat-card>
+    </div>
+  </div>
+</div>

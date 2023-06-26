@@ -11,9 +11,9 @@
       </a>
     </div>
     <div class="col-4">
-      <form action="">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && search()" novalidate>
         <div class="input-group mb-3">
-          <input type="text" class="form-control search" placeholder="Search" name="search">
+          <input type="text" class="form-control search" placeholder="Search" [(ngModel)]="form.search" matInput required name="search">
           <div class="input-group-append">
             <button type="submit" class="btn btn-outline-secondary" data-toggle="tooltip"
                     data-placement="bottom" title="Search!"><i class="fas fa-search"></i></button>
@@ -43,7 +43,7 @@
 
           <ul class="dropdown-menu" style="text-align: center">
             <li>
-              <button type="button" class="btn btn-success" data-toggle="modal"
+              <button type="button" class="btn btn-danger" data-toggle="modal"
                       data-target="#exampleModal" style="width: 100%">Account Information
               </button>
             </li>
@@ -71,4 +71,5 @@
   </div>
 </nav>
 <!-- Top navbar -->
+
 

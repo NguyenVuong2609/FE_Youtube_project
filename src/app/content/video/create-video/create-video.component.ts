@@ -45,7 +45,7 @@ export class CreateVideoComponent implements OnInit{
             this.status = 'Create channel first!'
           } else {
             this.status = 'Create success!'
-            setTimeout(window.location.reload, 2000);
+            setTimeout(window.location.reload, 1000);
             window.location.reload();
           }
       })

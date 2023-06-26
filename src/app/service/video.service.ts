@@ -35,4 +35,7 @@ export class VideoService {
   createVideoService(video: VideoDTO): Observable<any>{
     return this.httpClient.post(this.API_VIDEO, video);
   }
+  actionSearchService(name: string): Observable<any>{
+    return this.httpClient.get(this.API_VIDEO + "/search/" + name);
+  }
 }

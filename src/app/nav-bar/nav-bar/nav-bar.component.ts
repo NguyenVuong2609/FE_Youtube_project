@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TokenService} from "../../service/token.service";
 import {ChannelService} from "../../service/channel.service";
 import {Channel} from "../../model/Channel";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,9 +16,11 @@ export class NavBarComponent implements OnInit {
   curChannel?: Channel;
   roles?: string[];
   checkAdmin = false;
+  form: any = {};
 
   constructor(private tokenService: TokenService,
-              private channelService: ChannelService) {
+              private channelService: ChannelService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -51,5 +54,9 @@ export class NavBarComponent implements OnInit {
         }
       }
     }
+  }
+
+  search() {
+    this.router.navigate(['search/' + this.form.search])
   }
 }

@@ -22,6 +22,7 @@
                             <label class="form-label">Channel's Name:</label>
                             <input type="text" class="form-control" name="channel_name" #name="ngModel"
                                    [(ngModel)]="form.name" matInput required>
+                            <mat-error *ngIf="name.hasError('required')"> The name is required</mat-error>
                           </div>
                           <div class="mb-3">
                             <label class="form-label">Avatar</label>

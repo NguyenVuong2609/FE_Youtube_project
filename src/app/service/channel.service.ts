@@ -21,6 +21,12 @@ export class ChannelService {
   getMyChannel(): Observable<any> {
     return this.httpClient.get(this.API_CHANNEL + "/mychannel");
   }
+  getAllVideoOfMyChannel(id: number):Observable<any>{
+    return this.httpClient.get(this.API_CHANNEL + "/" + id + "/videos")
+  }
+  getSubscriberList(id: number): Observable<any>{
+    return this.httpClient.get(this.API_CHANNEL + "/subscriber/" + id);
+  }
 
   getCheckFollower(id: number): Observable<any> {
     return this.httpClient.get(this.API_CHANNEL + "/follow/" + id);

@@ -39,6 +39,12 @@ import { PageCategoryComponent } from './content/category/page-category/page-cat
 import { UpdateCategoryComponent } from './content/category/update-category/update-category.component';
 import { CreateChannelComponent } from './content/channel/create-channel/create-channel.component';
 import { CreateVideoComponent } from './content/video/create-video/create-video.component';
+import { CreatePlaylistComponent } from './content/playlist/create-playlist/create-playlist.component';
+import { MychannelComponent } from './content/channel/mychannel/mychannel.component';
+import { MyplaylistComponent } from './content/playlist/myplaylist/myplaylist.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { MyHistoryComponent } from './content/history/my-history/my-history.component';
+import { SearchPageComponent } from './home/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +64,12 @@ import { CreateVideoComponent } from './content/video/create-video/create-video.
     PageCategoryComponent,
     UpdateCategoryComponent,
     CreateChannelComponent,
-    CreateVideoComponent
+    CreateVideoComponent,
+    CreatePlaylistComponent,
+    MychannelComponent,
+    MyplaylistComponent,
+    MyHistoryComponent,
+    SearchPageComponent
   ],
   imports: [
     HttpClientModule,
@@ -81,7 +92,8 @@ import { CreateVideoComponent } from './content/video/create-video/create-video.
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonToggleModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
