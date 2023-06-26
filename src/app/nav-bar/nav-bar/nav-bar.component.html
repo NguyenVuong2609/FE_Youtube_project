@@ -54,10 +54,10 @@
               <a class="dropdown-item" routerLink="/create-channel">Create your channel</a>
             </li>
             <li *ngIf="curChannel != undefined">
-              <a class="dropdown-item" href="/create-video">Create Video</a>
+              <a class="dropdown-item" routerLink="/create-video">Create Video</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/create-playlist">Create Playlist</a>
+              <a class="dropdown-item" routerLink="/create-playlist">Create Playlist</a>
             </li>
             <li>
               <button type="button" (click)="logout()" class="btn btn-danger" data-toggle="modal"
