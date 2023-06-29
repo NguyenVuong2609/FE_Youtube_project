@@ -11,7 +11,7 @@
                 <div class="grid_title"><h3>My Playlist</h3></div>
                 <div class="grid_title flex-row d-flex flex-wrap" *ngIf="myPlaylist?.length != 0">
                   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="gap-5 flex-wrap">
-                    <div class="col-md-3 col-sx-10 p-2" *ngFor="let pl of myPlaylist">
+                    <div class="col-md-3 col-sx-10 p-2" *ngFor="let pl of myPlaylist" style="margin-right: 10px">
                       <img width="40" height="40" style="border-radius: 50%"
                            src="{{avatar}}"
                            class="rounded-circle">

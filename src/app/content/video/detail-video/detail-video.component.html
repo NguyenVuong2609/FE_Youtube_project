@@ -99,7 +99,7 @@
     </div>
     <div class="card-footer py-3 border-0 col-md-12" style="background-color: #f8f9fa;">
       <form #f="ngForm" (ngSubmit)="f.form.valid && postComment()" novalidate
-            class="col-md-12 col-12 col-lg12 form-control">
+            class="col-md-12 col-12 col-lg12 form-control" *ngIf="checkLogin">
         <div class="d-flex flex-start w-100">
           <img class="rounded-circle shadow-1-strong me-3"
                src="{{avatarUser}}" alt="avatar" width="40"

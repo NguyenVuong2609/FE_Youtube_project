@@ -45,6 +45,7 @@ import { MyplaylistComponent } from './content/playlist/myplaylist/myplaylist.co
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { MyHistoryComponent } from './content/history/my-history/my-history.component';
 import { SearchPageComponent } from './home/search-page/search-page.component';
+import { TrendingPageComponent } from './content/video/trending-page/trending-page.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { SearchPageComponent } from './home/search-page/search-page.component';
     MychannelComponent,
     MyplaylistComponent,
     MyHistoryComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    TrendingPageComponent
   ],
   imports: [
     HttpClientModule,

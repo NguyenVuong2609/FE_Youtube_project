@@ -707,7 +707,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   100% {
     width: 35px;
-    heigh: 35px;
+    height: 35px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%)
   }
@@ -743,7 +743,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   100% {
     width: 35px;
-    heigh: 35px;
+    height: 35px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%)
   }
