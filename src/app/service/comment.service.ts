@@ -7,7 +7,8 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class CommentService {
-  private API_VIDEO = environment.API_LOCAL + 'comment';
+  // private API_VIDEO = environment.API_LOCAL + 'comment';
+  private API_VIDEO = environment.API_SERVER + 'comment';
   constructor(private httpClient: HttpClient) {
   }
   actionPostCommentService(id: number, comment: any): Observable<any>{

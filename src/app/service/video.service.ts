@@ -9,7 +9,8 @@ import {VideoDTO} from "../model/VideoDTO";
   providedIn: 'root'
 })
 export class VideoService {
-  private API_VIDEO = environment.API_LOCAL + 'video';
+  // private API_VIDEO = environment.API_LOCAL + 'video';
+  private API_VIDEO = environment.API_SERVER + 'video';
 
   constructor(private httpClient: HttpClient) {
   }

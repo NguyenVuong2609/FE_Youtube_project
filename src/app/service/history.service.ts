@@ -8,7 +8,8 @@ import {History} from "../model/History";
   providedIn: 'root'
 })
 export class HistoryService {
-  private API_HISTORY = environment.API_LOCAL + 'history';
+  // private API_HISTORY = environment.API_LOCAL + 'history';
+  private API_HISTORY = environment.API_SERVER + 'history';
   constructor(private httpClient: HttpClient) { }
   createHistory(username: string): Observable<any>{
     return this.httpClient.post<any>(this.API_HISTORY,username);

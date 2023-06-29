@@ -9,7 +9,8 @@ import {ChannelDTO} from "../model/ChannelDTO";
   providedIn: 'root'
 })
 export class ChannelService {
-  private API_CHANNEL = environment.API_LOCAL + 'channel';
+  // private API_CHANNEL = environment.API_LOCAL + 'channel';
+  private API_CHANNEL = environment.API_SERVER + 'channel';
 
   constructor(private httpClient: HttpClient) {
   }

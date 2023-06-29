@@ -8,7 +8,8 @@ import {Category} from "../model/Category";
   providedIn: 'root'
 })
 export class CategoryService {
-  private API_CATEGORY = environment.API_LOCAL + "category";
+  // private API_CATEGORY = environment.API_LOCAL + "category";
+  private API_CATEGORY = environment.API_SERVER + "category";
 
   constructor(private httpClient: HttpClient) {
   }
