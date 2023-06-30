@@ -30,8 +30,8 @@
                           </div>
                           <div class="col-md-4 uploadFile">
                             <label class="form-label">Category</label>
-                            <mat-select [(ngModel)]="form.categoryList" name="categoryList" multiple>
-                              <mat-option *ngFor="let cat of categoryList" [value]="cat">{{cat.name}}</mat-option>
+                            <mat-select [(ngModel)]="form.category" name="categoryList" multiple>
+                              <mat-option *ngFor="let cat of category" [value]="cat">{{cat.name}}</mat-option>
                             </mat-select>
                           </div>
                           <div class="col-md-12">

@@ -13,13 +13,13 @@ import {Router} from "@angular/router";
 export class CreateVideoComponent implements OnInit{
   ngOnInit(): void {
     this.categoryService.getListCategory().subscribe(data =>{
-      this.categoryList = data
+      this.category = data
     })
   }
   form: any = {};
   status = '';
   video?: VideoDTO;
-  categoryList?: Category[];
+  category?: Category[];
   constructor(private videoService: VideoService,
               private categoryService: CategoryService,
               private router: Router) {
@@ -35,6 +35,7 @@ export class CreateVideoComponent implements OnInit{
 
   createVideo() {
     this.form = new VideoDTO(this.form.name, this.form.link, this.form.avatar, this.form.categoryList);
+    console.log(this.form, "Form")
     if (this.form.avatar == undefined) {
       this.status = 'Avatar is required!'
     } else if (this.form.link == undefined){
