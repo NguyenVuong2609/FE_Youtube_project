@@ -62,9 +62,6 @@ export class DetailVideoComponent implements OnInit {
         this.video = data;
         this.channel = data.channel;
       })
-      setTimeout(() => {
-        this.videoService.actionUpdateView(id).subscribe()
-      }, 5000)
       this.videoService.getCheckLikeVideo(id).subscribe(data => {
         if (data.message == "already") {
           this.checkLike = true;
@@ -79,6 +76,7 @@ export class DetailVideoComponent implements OnInit {
         this.commentList = data
       })
       this.videoService.getRelatedVideo(id).subscribe(data => {
+        console.log(data)
         this.relatedVideos = data
       })
     })
@@ -154,5 +152,17 @@ export class DetailVideoComponent implements OnInit {
       this.video = data;
       window.location.reload()
     })
+  }
+
+  count = 0;
+  public onTimeUpdate(value:any){
+    if (value.target.currentTime > 10){
+      if (this.count == 0){
+          this.videoService.actionUpdateView(this.videoId).subscribe(data =>{
+            console.log(data, "success")
+          });
+      }
+      this.count++;
+    }
   }
 }

@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12 col-sx-10 p-2">
           <div class="card">
-            <video src="{{video.vlink}}" controls autoplay></video>
+            <video src="{{video.vlink}}" (timeupdate)="onTimeUpdate($event)" controls autoplay></video>
             <div class="row" style="border: 1px solid #005cbf; border-radius: 8px; margin-top: 10px">
               <div class="col-2 mt-3" style="text-align: center;">
                 <img width="70" height="70" style="border-radius: 50%"
